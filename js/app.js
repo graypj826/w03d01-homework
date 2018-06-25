@@ -1,9 +1,11 @@
 class Tamagotchi {
-	constructor (hunger, sleepiness, boredom, age)
-	this.hunger = hunger;
-	this.sleepiness = sleepiness;
-	this.boredom = boredom;
-	this.age = age;
+	constructor (hunger, sleepiness, boredom, age){
+		this.hunger = hunger;
+		this.sleepiness = sleepiness;
+		this.boredom = boredom;
+		this.age = age;
+	}
 }
 
-const Tony = new Tamagotchi
+const tony = new Tamagotchi (1, 1, 1, 1);
+
