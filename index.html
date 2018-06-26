@@ -3,8 +3,7 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-	<script type="text/javascript" src="js/app.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
 </head>
 <body>
 <h1> Tamagotchi! </h1>
@@ -17,15 +16,16 @@
 <!-- stats in line across bottom of picture, but moves into column responsively -->
 	<h2> all about your Tamagotchi: </h2> <!--change name to match input  -->
 	<h3 id="hunger"> hunger: </h3>
-	<h3> sleep: </h3>
-	<h3> boredom: </h3>
-	<h3> age: </h3>
+	<h3 id="sleepiness"> sleepiness: </h3>
+	<h3 id="boredom"> boredom: </h3>
+	<h3 id="age"> age: </h3>
 </div>
 <div class="activity">
 	<h2> what would you like to do? </h2>
 	<button id="feedTama"> feed your tamagotchi </button> <!--change the name to match the Tama -->
-	<button> turn off the lights </button>
-	<button> play with your tamagotchi </button> <!-- change the name to match the tama -->
+	<button id="restTama"> turn off the lights </button>
+	<button id="playTama"> play with your tamagotchi </button> <!-- change the name to match the tama -->
 
+<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
