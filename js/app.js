@@ -27,12 +27,9 @@ class Tamagotchi {
 	// }
 }
 
-const tony = new Tamagotchi (8, 8, 8, 2);
+const tony = new Tamagotchi (1, 1, 1, 1);
 
-//what we need: timer to increase stats for inactivity, reset to 0 each time stats go up or 
-//timer for age? 
-
-
+let seconds = 0
 
 $('#nameButton').on("click",() => {
 	const $nameInput = $("input:text").val();
@@ -50,105 +47,65 @@ $('#nameButton').on("click",() => {
 		$("h3:contains('sleepiness:')").text(`sleepiness: ${tony.sleepiness}`);
 		$("h3:contains('boredom:')").text(`boredom: ${tony.boredom}`);
 		$("h3:contains('age:')").text(`age: ${tony.age}`);
+		
+		const timePassing = () => {
+			seconds ++;
+			tony.hunger ++;
+			 $("h3:contains('hunger:')").text(`hunger: ${tony.hunger}`);
 
-		//getOlder();
-		//getHungry();
-		//getSleepy();
-		//getBored();
+			tony.sleepiness ++;
+			$("h3:contains('sleepiness:')").text(`sleepiness: ${tony.sleepiness}`);
+
+			tony.boredom ++;
+			$("h3:contains('boredom:')").text(`boredom: ${tony.boredom}`);
+
+			tony.age ++;
+			$("h3:contains('age:')").text(`age: ${tony.age}`);
+
+			if (tony.age === 5){
+			evolve()
+			}
+
+			if (tony.age === 9){
+			evolve()
+			}
+
+			if (tony.hunger >= 10 || tony.sleepiness >= 10 || tony.boredom >= 10){
+				clearInterval(timePasses);
+				$("body").text("DEATH");
+				}	
+			}
+	const timePasses = setInterval(timePassing,6000);
 
 	}
 
-const getOlder = () => {
-  // Start an interval and when it reaches 0, increase the round
-  // number
-  const timer = setInterval(() => {
-
-    tony.age++; //how do I increase an objects age?
-    $("h3:contains('age:')").text(`age: ${tony.age}`);
-
-    if(tony.age >= 10){
-      clearInterval(timer);
-    } 
-
-  }, 1000);
-  // setInterval, how do I stop setInterval
-}
-
-
-
-const getHungry = () => {
-  // Start an interval and when it reaches 0, increase the round
-  // number
-  const timer = setInterval(() => {
-
-    tony.hunger++; //how do I increase an objects age?
-    $("h3:contains('hunger:')").text(`hunger: ${tony.hunger}`);
-
-    if(tony.hunger >= 10){
-      clearInterval(timer);
-    } 
-
-  }, 4000);
-  // setInterval, how do I stop setInterval
-}
-
-
-const getSleepy = () => {
-  // Start an interval and when it reaches 0, increase the round
-  // number
-  const timer = setInterval(() => {
-
-    tony.sleepiness++; 
-    $("h3:contains('sleepiness:')").text(`sleepiness: ${tony.sleepiness}`);
-
-    if(tony.sleepiness >= 10){
-      clearInterval(timer);
-    } 
-
-  }, 1000);
-  // setInterval, how do I stop setInterval
-}
-
-
-const getBored = () => {
-  // Start an interval and when it reaches 0, increase the round
-  // number
-  const timer = setInterval(() => {
-
-    tony.boredom++; 
-    $("h3:contains('boredom:')").text(`boredom: ${tony.boredom}`);
-
-    if(tony.boredom >= 10){
-      clearInterval(timer);
-    } 
-
-  }, 1000);
-  // setInterval, how do I stop setInterval
-}
 
 $("#feedTama").click(function(){
-	tony.feed();
+	tony.hunger --
 	$("#hunger").text(`hunger: ${tony.hunger}`);
 	console.log("feed") //too much becomes fat?, oh evloution based off feed rest and play?
 })
 
 $("#restTama").click(function(){
-	tony.rest();
+	tony.sleepiness --;
 	$("#sleepiness").text(`sleepiness: ${tony.sleepiness}`);
 	console.log("rest")
 })
 
 $("#playTama").click(function(){
-	tony.play();
+	tony.boredom --;
 	$("#boredom").text(`boredom: ${tony.boredom}`);
-	console.log("play")
 	//launch tamagame (memory game or squares game?, rest to 0)
 
 })
 
-
-		
-
+const evolve = () =>{
+	if (tony.age == 5){
+		$("#tamaPic").attr("src","https://orig00.deviantart.net/9703/f/2015/050/0/c/kawaii_monster_by_smilegabby-d8ioaph.png")
+	} else if (tony.age == 9){
+		$("#tamaPic").attr("src", "http://p7.storage.canalblog.com/76/83/558239/97800057_o.png")
+	}
+}
 
 //todo naming/login screen
 //evolution of tama
