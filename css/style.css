@@ -3,33 +3,18 @@ body {
 	text-transform: uppercase;
 	font-family: 'Indie Flower', cursive;
 	text-align: center;
-	margin:0 auto;
-	width:100%;
 }
 
 h1 {
 display: block;
 margin: 0 auto;
-width: 100%;
-
-}
-
-.single-stat-div{
-	background-color: orange;
-	display:inline-block;
-	width: 200px;
+color: white;
 
 }
 
 #image-display{
-	display:inline-block;
-	width:50%;
-}
-
-#tama-background{
-	width: 80%;
-	margin-left: 10%;
-	background-image: url("http://ansimuz.com/site/wp-content/uploads/2015/02/anim_01.gif")
+	background-image: url("http://ansimuz.com/site/wp-content/uploads/2015/02/anim_01.gif");
+	margin: auto;
 
 }
 
@@ -37,15 +22,40 @@ width: 100%;
 	height: 60%;
 	width: 60%;
 	display: block;
-	margin: 0 auto;
+	margin: auto;
 }
 
 .activity{
 	display: inline-block;
+	text-transform: uppercase;
+}
+
+.activity h4{
+	color: white;
 }
 
 .activity button{
 	width: 200px;
 }
 
+.body-display{
+	background-color: blue;
+	border: 5px solid white;
+	border-radius: 25px;
+}
 
+#stats-section{
+	background-color: gray;
+	opacity: 0.8;
+	color: black;
+}
+
+.single-stat-div{
+	display: inline-block;
+	padding-left: 3%;
+	padding-right: 3%;
+}
+
+#to-hide{
+
+}
