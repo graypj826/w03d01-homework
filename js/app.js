@@ -38,7 +38,24 @@ $('#nameButton').on("click",() => {
 	});
 
 	const personalizeTama = (namingTama) =>{
-		console.log(namingTama);
+
+		$("#tamaPic").animate({
+			opacity: 0.25,
+			left: "+=50",
+			height: "toggle"
+		}, 5000, function(){
+			$("#tamaPic").attr("src","https://i.pinimg.com/originals/ba/75/d0/ba75d0d62b053285fa0e6c0b6883136e.png");
+		})
+
+		// $("#tamaPic").attr({
+		// 	opacity: 0.25,
+		// 	left: "+=50",
+		// 	height: "toggle"
+		// }, 5000, function(){
+		// 	$("#tamaPic").attr("src","https://i.pinimg.com/originals/ba/75/d0/ba75d0d62b053285fa0e6c0b6883136e.png");
+		// })
+		$('#get-name').hide();
+		$("h1:contains('Tamagotchi')").text(`${namingTama}`)
 		$("h2:contains('all')").text(`all about ${namingTama}`)
 		$("#feedTama").text(`Feed ${namingTama}`)
 		$("button:contains('play with')").text(`play with ${namingTama}`)
@@ -72,10 +89,19 @@ $('#nameButton').on("click",() => {
 
 			if (tony.hunger >= 10 || tony.sleepiness >= 10 || tony.boredom >= 10){
 				clearInterval(timePasses);
+				$("#tamaPic").animate({
+					opacity: 0.25,
+					left: "+=50",
+					height: "toggle"
+					}, 5000, function(){
+
+					});
+	
 				$("body").text("DEATH");
+
 				}	
 			}
-	const timePasses = setInterval(timePassing,6000);
+	const timePasses = setInterval(timePassing,1000);
 
 	}
 
@@ -101,11 +127,16 @@ $("#playTama").click(function(){
 
 const evolve = () =>{
 	if (tony.age == 5){
-		$("#tamaPic").attr("src","https://orig00.deviantart.net/9703/f/2015/050/0/c/kawaii_monster_by_smilegabby-d8ioaph.png")
+		$("#tama-pic").attr("src","https://orig00.deviantart.net/9703/f/2015/050/0/c/kawaii_monster_by_smilegabby-d8ioaph.png")
 	} else if (tony.age == 9){
-		$("#tamaPic").attr("src", "http://p7.storage.canalblog.com/76/83/558239/97800057_o.png")
+		$("#tama-pic").attr("src", "http://p7.storage.canalblog.com/76/83/558239/97800057_o.png")
 	}
 }
+
+
+
+
+
 
 //todo naming/login screen
 //evolution of tama

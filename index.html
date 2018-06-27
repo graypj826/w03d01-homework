@@ -1,30 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<!-- Latest compiled and minified CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <h1> Tamagotchi! </h1>
-<img src ="https://i.pinimg.com/originals/ba/75/d0/ba75d0d62b053285fa0e6c0b6883136e.png" id="tamaPic">
-<div>
+<div class = "stats-section">
+<!-- stats in line across bottom of picture, but moves into column responsively -->
+	
+</div>
+<div id = "image-display">
+	<div id="tama-background">
+		<img id="tama-pic" src="https://archive-media-0.nyafuu.org/vp/image/1370/75/1370750993164.png">
+	</div>
+</div>	
+<div id ="get-name">
 	<input type="text">
 	<button id="nameButton"> Make it O-fish </button>
 </div>
-<div class = "stats">
-<!-- stats in line across bottom of picture, but moves into column responsively -->
-	<h2> all about your Tamagotchi: </h2> <!--change name to match input  -->
-	<h3 id="hunger"> hunger: </h3>
-	<h3 id="sleepiness"> sleepiness: </h3>
-	<h3 id="boredom"> boredom: </h3>
-	<h3 id="age"> age: </h3>
-</div>
+<h2> all about your Tamagotchi: </h2> <!--change name to match input  -->
+	<div class = "single-stat-div">
+		<h4 id="hunger"> hunger: </h3>
+	</div>
+	<div class = "single-stat-div">
+		<h4 id="sleepiness"> sleepiness: </h3>
+	</div>
+	<div class = "single-stat-div">
+		<h4 id="boredom"> boredom: </h3>
+	</div>
+	<div class = "single-stat-div">
+		<h4 id="age"> age: </h3>
+	</div>
 <div class="activity">
-	<h2> what would you like to do? </h2>
+	<h4> what would you like to do? </h2>
 	<button id="feedTama"> feed your tamagotchi </button> <!--change the name to match the Tama -->
 	<button id="restTama"> turn off the lights </button>
 	<button id="playTama"> play with your tamagotchi </button> <!-- change the name to match the tama -->
+</div>
 
 <script type="text/javascript" src="js/app.js"></script>
 </body>

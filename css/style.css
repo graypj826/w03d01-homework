@@ -1,14 +1,51 @@
 body {
-	background-color: gray;
+	background-color: white;
 	text-transform: uppercase;
+	font-family: 'Indie Flower', cursive;
+	text-align: center;
+	margin:0 auto;
+	width:100%;
+}
+
+h1 {
+display: block;
+margin: 0 auto;
+width: 100%;
+
+}
+
+.single-stat-div{
+	background-color: orange;
+	display:inline-block;
+	width: 200px;
+
+}
+
+#image-display{
+	display:inline-block;
+	width:50%;
+}
+
+#tama-background{
+	width: 80%;
+	margin-left: 10%;
+	background-image: url("http://ansimuz.com/site/wp-content/uploads/2015/02/anim_01.gif")
+
+}
+
+#tama-pic{
+	height: 60%;
+	width: 60%;
+	display: block;
+	margin: 0 auto;
+}
+
+.activity{
+	display: inline-block;
+}
+
+.activity button{
+	width: 200px;
 }
 
 
-img {
-	height: 500px;
-	width: 500px;
-}
-
-h1{
-
-}
