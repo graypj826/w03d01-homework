@@ -7,7 +7,7 @@ body {
 
 h1 {
 display: block;
-margin: 0 auto;
+margin: 5% auto 0 auto;
 color: white;
 
 }
@@ -15,7 +15,8 @@ color: white;
 #image-display{
 	background-image: url("http://ansimuz.com/site/wp-content/uploads/2015/02/anim_01.gif");
 	margin: auto;
-
+	padding-top: 5%;
+	border: 2px solid black;
 }
 
 #tama-pic{
@@ -36,18 +37,21 @@ color: white;
 
 .activity button{
 	width: 200px;
+	margin-bottom:5%;
 }
 
 .body-display{
 	background-color: blue;
 	border: 5px solid white;
 	border-radius: 25px;
+	box-shadow: 5px 10px;
 }
 
 #stats-section{
 	background-color: gray;
 	opacity: 0.8;
-	color: black;
+	color: white;
+
 }
 
 .single-stat-div{
@@ -58,4 +62,22 @@ color: white;
 
 #to-hide{
 
+}
+
+#get-name{
+	margin-top: 5%;
+	margin-bottom: 15%;
+}
+
+input, button{
+	text-transform: uppercase;
+	box-shadow: 2px 3px;
+}
+
+#death-pic{
+    margin: auto;
+    padding-top: 5%;
+    height: 40%;
+    display: block;
+    background-image: url("https://i.pinimg.com/736x/52/bc/50/52bc505cedccde12e5beb222041b61ac---bit-illustration-pixel-art.jpg")
 }

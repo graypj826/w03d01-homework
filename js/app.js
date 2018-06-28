@@ -9,47 +9,42 @@ class Tamagotchi {
 	feed(){
 		// if(this.hunger > 1){
 			this.hunger--;
-			console.log("is this working")
 		// }
 	}
 	rest(){
 		// if(this.rest > 1){
 			this.sleepiness--;
-			console.log('what the hell')
 		// }
 	}
 	play(){
 		// if(this.play > 1){
 			this.boredom--;
-			console.log('what the hell')
 		}
 
 	// }
 }
 
-const tony = new Tamagotchi (1, 1, 1, 1);
+const tony = new Tamagotchi (0, 0, 0, 0);
 
 let seconds = 0
 
 $('.to-hide').hide()
 
 $('#nameButton').on("click",() => {
-	const $nameInput = $("input:text").val();
-		
+	const $nameInput = $("input:text").val();	
 	personalizeTama($nameInput);
-	});
+	$('#playAgain').hide()
+	$('.to-hide').show();
+	tonyReset();
+});
+	
 
-	const personalizeTama = (namingTama) =>{
-
-		$('.to-hide').show();
+const personalizeTama = (namingTama) =>{
+		
+		$('#get-name').hide();
+		
+		
 		$('#image-display').css("background-image", "url(https://s-media-cache-ak0.pinimg.com/originals/98/7e/eb/987eebdb5a02bb22ca7fdfe256f1c9a9.gif)").css("background-size", "contain")
-		// $("#tamaPic").animate({
-		// 	opacity: 0.25,
-		// 	left: "+=50",
-		// 	height: "toggle"
-		// }, 5000, function(){
-		// 	$("#tamaPic").attr("src","https://i.pinimg.com/originals/ba/75/d0/ba75d0d62b053285fa0e6c0b6883136e.png");
-		// })
 
 		
 		//$('body').append(toAdd);
@@ -61,8 +56,8 @@ $('#nameButton').on("click",() => {
 		$("h3:contains('hunger:')").text(`hunger: ${tony.hunger}`);
 		$("h3:contains('sleepiness:')").text(`sleepiness: ${tony.sleepiness}`);
 		$("h3:contains('boredom:')").text(`boredom: ${tony.boredom}`);
-		$("h3:contains('age:')").text(`age: ${tony.age}`);
-		$('#get-name').hide();
+		// $("h3:contains('age:')").text(`age: ${tony.age}`);
+		
 
 		const timePassing = () => {
 			seconds ++;
@@ -72,7 +67,6 @@ $('#nameButton').on("click",() => {
 			tony.sleepiness ++;
 			$('#image-display').css("background-image", "url(https://s-media-cache-ak0.pinimg.com/originals/98/7e/eb/987eebdb5a02bb22ca7fdfe256f1c9a9.gif)").css("background-size", "contain");
 			$("#sleepiness").text(`sleepiness: ${tony.sleepiness}`);
-			console.log(tony.hunger);
 
 			tony.boredom ++;
 			$("#boredom").text(`boredom: ${tony.boredom}`);
@@ -93,7 +87,7 @@ $('#nameButton').on("click",() => {
 				death();
 				}	
 			}
-	const timePasses = setInterval(timePassing,6000);
+	const timePasses = setInterval(timePassing,1000);
 
 	}
 
@@ -120,26 +114,72 @@ $("#playTama").click(function(){
 
 const evolve = () =>{
 	if (tony.age == 2){
-		$("#tama-pic").attr("src","https://orig00.deviantart.net/9703/f/2015/050/0/c/kawaii_monster_by_smilegabby-d8ioaph.png")
+		$("#tama-pic").fadeOut(
+		600,
+		function(){
+		fadeTamaIn()
+	})
 	} else if (tony.age == 6){
-		$("#tama-pic").hide();
+		$("#tama-pic").fadeOut(
+		600,
+		function(){
+		fadeTamaIn()
+
+	})
 	}
 }
+
+const fadeTamaIn = () => {
+	if (tony.age == 2){
+	$("#tama-pic").attr("src","https://orig00.deviantart.net/9703/f/2015/050/0/c/kawaii_monster_by_smilegabby-d8ioaph.png")
+	$("#tama-pic").fadeIn(
+		300);
+	} else if(tony.age == 6){
+	$("#tama-pic").attr("src","https://i.pinimg.com/originals/1b/63/e1/1b63e1610e111da79fc638560870775d.png")
+	$("#tama-pic").fadeIn(
+		300);
+	}
+}	
+
+const deathFadeIn = () => {
+	$("#tama-pic").attr("src", "https://orig00.deviantart.net/d4c3/f/2013/302/c/6/kawaii_ghost_by_amis0129-d6s8i8o.png");
+	$("#tama-pic").fadeIn(
+		300)
+	$('#image-display').css("background-image", "url(http://25.media.tumblr.com/tumblr_lw7hmdGU5N1r81qodo1_500.gif)").css("background-size", "contain").css("margin-bottom:5%");
+	$('#image-display').fadeIn(
+		300)
+}
+
+const tonyReset = () => {
+	$("#tama-pic").attr("src", "https://archive-media-0.nyafuu.org/vp/image/1370/75/1370750993164.png");
+	tony.age = 0
+	tony.hunger = 0 
+	tony.sleepiness = 0
+	tony.boredom = 0
+}
+
 const deathScreen = () => {
 	$(".hide-at-death").hide();
 	$("h1").text("You're Tamagotchi has died")
-	$("h1").append("<img src='http://aleshadrew.com/wp-content/uploads/2014/11/monster_cry.gif'>");
+	deathFadeIn()
+	$("#image-display").after("<h1 id='playAgain'> play again? </h1>");
+	$("input:text").val(' ');
+	$('#get-name').show();
+	
 }
 
 
 const death = () =>{
-	console.log("le death")
 	$("#tama-pic").fadeOut(
 		600,
 	function(){
 		$("body-display").append(deathScreen())
+		
 	})
+
 }
+
+
 
 const randomNight = () => {
 	const randomNumber = Math.floor(Math.random() * 90);
@@ -155,15 +195,49 @@ const randomNight = () => {
 	}
 };
 
-// const toAdd = "<h2> all about your Tamagotchi: </h2> <div class = 'single-stat-div'> <h4 id='hunger'> hunger: </h3></div><div class = 'single-stat-div'><h4 id='sleepiness'> sleepiness: </h3></div><div class = 'single-stat-div'><h4 id='boredom'> boredom: </h3></div><div class = 'single-stat-div'><h4 id='age'> age: </h3></div><div class='activity'><h4> what would you like to do? </h2><button id='feedTama'> feed your tamagotchi </button> <!--change the name to match the Tama --><button id='restTama'> turn off the lights </button><button id='playTama'> play with your tamagotchi </button> <!-- change the name to match the tama --></div>"
 
+// const moveRight = () => {
+//        $("#tama-pic").animate({
+//        left: "+=188"
+//      }, 2000, function() {
+//         moveLeft();
 
-//todo naming/login screen
-//evolution of tama
-//preggers tama
-//game for play tama
-//style
-  // retro design with pixelated tama and flowing trees
-//jquery slideup and down for tama
-//evolution egg at login --> name tama --> baby tama --> juvenile tama -->fullgrown tama
-//bouncing movement?
+//      });
+//    }
+
+// const moveLeft = () => {
+//        $("#tama-pic").animate({
+//        left: "-=188"
+//      }, 2000, function() {
+//         setTimeout(moveRight, 50);
+
+//      });
+//    }
+
+//    setTimeout(moveRight, 50);
+// const moveUp = () => {
+//        $("#tama-pic").animate({
+//        bottom: "+=30"
+//      }, 100, function() {
+//         moveDown()
+
+//      });
+//    }
+// const moveDown = () => {
+//        $("#tama-pic").animate({
+//        bottom: "-=30"
+//      }, 100, function(){
+//          $(".bounce").animate({
+//              left: "0"
+//          }, 2000, function(){
+//              moveRight();
+//          })
+//      });
+
+//    }
+// $(".play").click(function(){
+//     firstTamogatchi.play();
+//     $(".bounce").stop();
+//     moveUp();
+
+// });
