@@ -60,7 +60,8 @@ $('.to-hide').hide()
 $('#nameButton').on("click",() => {
 	const $nameInput = $("input:text").val();	
 	personalizeTama($nameInput);
-	$('#playAgain').hide()
+	$('#playAgain').hide();
+	$('#stats-section').show();
 	$('.to-hide').show();
 	tonyReset();
 	$("#hunger").text(`hunger: 0`);
@@ -137,10 +138,9 @@ $("#restTama").click(function(){
 })	
 
 $("#playTama").click(function(){
+    moveUp();
 	$("#boredom").text(`boredom: ${tony.boredom}`);
-	//launch tamagame (memory game or squares game?, rest to 0)
-
-})
+});
 
 const evolve = () =>{
 	if (tony.age == 2){
@@ -232,19 +232,6 @@ const randomNight = () => {
 	}
 };
 
-// const randomFood = () => {
-// 	const randomNumber = Math.floor(Math.random() * 90);
-// 	if (randomNumber <= 30){
-// 		$('#food-display').attr("src", )
-// 		console.log("night 1");
-// 	} else if ( randomNumber <= 85 && randomNumber >= 30){
-// 		 $('#food-display').attr("src", )
-// 		console.log("night 2");
-// 	} else {	
-// 		$('#food-display').attr("src", )
-// 		console.log("night 3");
-// 	}
-// };
 
 const fadeFoodInOut = () => {
 	let randomNumber = Math.floor(Math.random() * 3);
@@ -287,32 +274,26 @@ const fadeFoodInOut = () => {
 	}
 }
 
+const moveUp = () => {
+    $("#tama-pic").animate({
+       bottom: "+=20"
+     }, 50, function() {
+        moveDown()
+
+     });
+   }
+
+const moveDown = () => {
+       $("#tama-pic").animate({
+       bottom: "-=20"
+     }, 50, function(){
+         $(".bounce").animate({
+             left: "0"
+         }, 50, function(){
+             moveRight();
+         })
+     });
+
+   }
 
 
-//    setTimeout(moveRight, 50);
-// const moveUp = () => {
-//        $("#tama-pic").animate({
-//        bottom: "+=30"
-//      }, 100, function() {
-//         moveDown()
-
-//      });
-//    }
-// const moveDown = () => {
-//        $("#tama-pic").animate({
-//        bottom: "-=30"
-//      }, 100, function(){
-//          $(".bounce").animate({
-//              left: "0"
-//          }, 2000, function(){
-//              moveRight();
-//          })
-//      });
-
-//    }
-// $(".play").click(function(){
-//     firstTamogatchi.play();
-//     $(".bounce").stop();
-//     moveUp();
-
-// });
