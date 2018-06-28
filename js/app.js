@@ -138,6 +138,7 @@ $("#restTama").click(function(){
 })	
 
 $("#playTama").click(function(){
+    tony.play();
     moveUp();
 	$("#boredom").text(`boredom: ${tony.boredom}`);
 });
@@ -241,8 +242,8 @@ const fadeFoodInOut = () => {
 		}
 		$('#stats-section').before('<img class="food" src="https://78.media.tumblr.com/c4e160ddb79839eb78641f70b6e5ca2d/tumblr_ojhc0pB4em1vkpk4fo1_500.png" />')
 		$('.food').fadeIn(
-			1000, function(){
-			$('.food').fadeOut(1000,function(){
+			800, function(){
+			$('.food').fadeOut(800,function(){
 				$('.food').remove()
 				}
 			)
@@ -253,8 +254,8 @@ const fadeFoodInOut = () => {
 		}
 		$('#stats-section').before('<img class="food" src="https://data.whicdn.com/images/11815670/superthumb.gif?t=1310316270" />')
 		$('.food').fadeIn(
-			1000, function(){
-			$('.food').fadeOut(1000,function(){
+			800, function(){
+			$('.food').fadeOut(800,function(){
 				$('.food').remove()
 				}
 			)
@@ -265,8 +266,8 @@ const fadeFoodInOut = () => {
 		}
 		$('#stats-section').before('<img class="food" src="https://s1.piq.land/2014/09/23/92AwHC89RLT2QkrhuZ67WFnr_400x400.png" />')
 		$('.food').fadeIn(
-			1000, function(){
-			$('.food').fadeOut(1000,function(){
+			800, function(){
+			$('.food').fadeOut(800,function(){
 				$('.food').remove()
 				}
 			)
