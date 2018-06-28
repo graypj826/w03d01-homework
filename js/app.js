@@ -84,7 +84,7 @@ const personalizeTama = (namingTama) =>{
 		$("h2:contains('all')").text(`all about ${namingTama}`)
 		$("#feedTama").text(`Feed ${namingTama}`)
 		$("button:contains('play with')").text(`play with ${namingTama}`)
-		
+		$("button:contains('let')").text(`let ${namingTama} rest`)
 		
 		// $("h3:contains('age:')").text(`age: ${tony.age}`);
 		
