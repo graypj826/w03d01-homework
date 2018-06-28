@@ -193,7 +193,7 @@ const tonyReset = () => {
 
 const deathScreen = () => {
 	$(".hide-at-death").hide();
-	$("h1").text("You're Tamagotchi has died")
+	$("h1").text("Your Tamagotchi has died")
 	deathFadeIn()
 	$("#image-display").after("<h1 id='playAgain'> play again? </h1>");
 	$("input:text").val(' ');
