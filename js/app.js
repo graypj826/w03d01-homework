@@ -76,7 +76,8 @@ const personalizeTama = (namingTama) =>{
 		$('#get-name').hide();
 		
 		
-		$('#image-display').css("background-image", "url(https://s-media-cache-ak0.pinimg.com/originals/98/7e/eb/987eebdb5a02bb22ca7fdfe256f1c9a9.gif)").css("background-size", "contain")
+		$('#image-display').css("background-image", "url(https://i.pinimg.com/originals/71/3c/bf/713cbf391b7830d6d50738ebf0b91091.gif)")
+		//.css("background-size", "contain")
 
 		
 		//$('body').append(toAdd);
@@ -96,7 +97,8 @@ const personalizeTama = (namingTama) =>{
 
 			tony.sleepiness ++;
 			document.getElementById("restTama").disabled = false;
-			$('#image-display').css("background-image", "url(https://s-media-cache-ak0.pinimg.com/originals/98/7e/eb/987eebdb5a02bb22ca7fdfe256f1c9a9.gif)").css("background-size", "contain");
+			$('#image-display').css("background-image", "url(https://i.pinimg.com/originals/71/3c/bf/713cbf391b7830d6d50738ebf0b91091.gif)")
+			//.css("background-size", "contain");
 			$("#sleepiness").text(`sleepiness: ${tony.sleepiness}`);
 
 			tony.boredom ++;
@@ -193,7 +195,7 @@ const tonyReset = () => {
 
 const deathScreen = () => {
 	$(".hide-at-death").hide();
-	$("h1").text("Your Tamagotchi has died")
+	$("h1").text("Your  Tamagotchi has died")
 	deathFadeIn()
 	$("#image-display").after("<h1 id='playAgain'> play again? </h1>");
 	$("input:text").val(' ');
@@ -231,7 +233,7 @@ const randomNight = () => {
 			tony.sleepiness -= 1
 			console.log("randomnight running")
 		} 
-		$('#image-display').css("background-image", "url(http://redcandlegames.com/detention/images/B006.gif)").css("background-size", "contain")
+		$('#image-display').css("background-image", "url(https://media.giphy.com/media/Taib9YO3qCZiw/giphy.gif)").css("background-size", "contain")
 	}
 
 };
