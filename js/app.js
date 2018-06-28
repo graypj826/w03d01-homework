@@ -95,6 +95,7 @@ const personalizeTama = (namingTama) =>{
 			 $("#hunger").text(`hunger: ${tony.hunger}`);
 
 			tony.sleepiness ++;
+			document.getElementById("restTama").disabled = false;
 			$('#image-display').css("background-image", "url(https://s-media-cache-ak0.pinimg.com/originals/98/7e/eb/987eebdb5a02bb22ca7fdfe256f1c9a9.gif)").css("background-size", "contain");
 			$("#sleepiness").text(`sleepiness: ${tony.sleepiness}`);
 
@@ -133,6 +134,7 @@ $("#feedTama").click(function(){
 
 $("#restTama").click(function(){
 	randomNight();
+	document.getElementById("restTama").disabled = true;
 	//setTimeout
 	$("#sleepiness").text(`sleepiness: ${tony.sleepiness}`);
 })	
@@ -231,6 +233,7 @@ const randomNight = () => {
 		} 
 		$('#image-display').css("background-image", "url(http://redcandlegames.com/detention/images/B006.gif)").css("background-size", "contain")
 	}
+
 };
 
 
