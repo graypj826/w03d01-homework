@@ -24,6 +24,7 @@ color: white;
 	width: 60%;
 	display: block;
 	margin: auto;
+	position: relative;
 }
 
 .activity{
@@ -80,4 +81,11 @@ input, button{
     height: 40%;
     display: block;
     background-image: url("https://i.pinimg.com/736x/52/bc/50/52bc505cedccde12e5beb222041b61ac---bit-illustration-pixel-art.jpg")
+}
+
+.food{
+	float: inherit;
+	height: 50%;
+	width: 50%;
+	margin: auto;
 }

@@ -8,17 +8,24 @@ class Tamagotchi {
 
 	feed(){
 		// if(this.hunger > 1){
-			this.hunger--;
+			if(this.hunger >1 ){
+				this.hunger--;
+			}
 		// }
 	}
 	rest(){
 		// if(this.rest > 1){
-			this.sleepiness--;
+			if(this.sleepiness >1){
+			this.sleepiness--;	
+			}
+			
 		// }
 	}
 	play(){
 		// if(this.play > 1){
+			if(this.boredom>1){
 			this.boredom--;
+		}
 		}
 
 	// }
@@ -30,12 +37,36 @@ let seconds = 0
 
 $('.to-hide').hide()
 
+// const moveRight = () => {
+//        $(".moveDisShit").animate({
+//        left: "+=100"
+//      }, 2000, function() {
+//         moveLeft();
+
+//      });
+//    }
+
+// const moveLeft = () => {
+//        $(".moveDisShit").animate({
+//        left: "-=100"
+//      }, 2000, function() {
+//         setTimeout(moveRight, 50);
+
+//      });
+//    }
+
+// moveRight();
+
 $('#nameButton').on("click",() => {
 	const $nameInput = $("input:text").val();	
 	personalizeTama($nameInput);
 	$('#playAgain').hide()
 	$('.to-hide').show();
 	tonyReset();
+	$("#hunger").text(`hunger: 0`);
+	$("#sleepiness").text(`sleepiness: 0`);
+	$("#boredom").text(`boredom: 0`);
+	$("#age").text('age: 0')
 });
 	
 
@@ -53,9 +84,7 @@ const personalizeTama = (namingTama) =>{
 		$("#feedTama").text(`Feed ${namingTama}`)
 		$("button:contains('play with')").text(`play with ${namingTama}`)
 		
-		$("h3:contains('hunger:')").text(`hunger: ${tony.hunger}`);
-		$("h3:contains('sleepiness:')").text(`sleepiness: ${tony.sleepiness}`);
-		$("h3:contains('boredom:')").text(`boredom: ${tony.boredom}`);
+		
 		// $("h3:contains('age:')").text(`age: ${tony.age}`);
 		
 
@@ -78,6 +107,10 @@ const personalizeTama = (namingTama) =>{
 			evolve()
 			}
 
+			if (tony.age === 2){
+			$('#allAbout').hide()
+			}
+
 			if (tony.age === 6){
 			evolve()
 			}
@@ -87,26 +120,23 @@ const personalizeTama = (namingTama) =>{
 				death();
 				}	
 			}
-	const timePasses = setInterval(timePassing,1000);
+	const timePasses = setInterval(timePassing,4000);
 
 	}
 
 
 $("#feedTama").click(function(){
-	tony.hunger --
+	fadeFoodInOut() //too much becomes fat?, oh evloution based off feed rest and play?
 	$("#hunger").text(`hunger: ${tony.hunger}`);
-	console.log("feed") //too much becomes fat?, oh evloution based off feed rest and play?
-})
+});
 
 $("#restTama").click(function(){
-	tony.sleepiness --;
 	randomNight();
 	//setTimeout
 	$("#sleepiness").text(`sleepiness: ${tony.sleepiness}`);
 })	
 
 $("#playTama").click(function(){
-	tony.boredom --;
 	$("#boredom").text(`boredom: ${tony.boredom}`);
 	//launch tamagame (memory game or squares game?, rest to 0)
 
@@ -133,11 +163,11 @@ const fadeTamaIn = () => {
 	if (tony.age == 2){
 	$("#tama-pic").attr("src","https://orig00.deviantart.net/9703/f/2015/050/0/c/kawaii_monster_by_smilegabby-d8ioaph.png")
 	$("#tama-pic").fadeIn(
-		300);
+		600);
 	} else if(tony.age == 6){
 	$("#tama-pic").attr("src","https://i.pinimg.com/originals/1b/63/e1/1b63e1610e111da79fc638560870775d.png")
 	$("#tama-pic").fadeIn(
-		300);
+		600);
 	}
 }	
 
@@ -179,40 +209,85 @@ const death = () =>{
 
 }
 
-
-
 const randomNight = () => {
-	const randomNumber = Math.floor(Math.random() * 90);
+	let randomNumber = Math.floor(Math.random() * 90);
 	if (randomNumber <= 30){
+		if(tony.sleepiness >4) {
+			tony.sleepiness -= 2
+			console.log("randomnight running")
+		}
 		$('#image-display').css("background-image", "url(https://archive-media-0.nyafuu.org/bant/image/1496/02/1496021199032.gif)").css("background-size", "contain")
-		console.log("night 1");
 	} else if ( randomNumber <= 85 && randomNumber >= 30){
+		if(tony.sleepiness >4) {
+			tony.sleepiness -= 1
+			console.log("randomnight running")
+		}
 		 $('#image-display').css("background-image", "url(https://i.pinimg.com/originals/22/cf/de/22cfde6c6415e1f061e49e0983059782.gif)").css("background-size", "contain")
-		console.log("night 2");
-	} else {	
+	} else {
+		if(tony.sleepiness >4) {
+			tony.sleepiness -= 1
+			console.log("randomnight running")
+		} 
 		$('#image-display').css("background-image", "url(http://redcandlegames.com/detention/images/B006.gif)").css("background-size", "contain")
-		console.log("night 3");
 	}
 };
 
+// const randomFood = () => {
+// 	const randomNumber = Math.floor(Math.random() * 90);
+// 	if (randomNumber <= 30){
+// 		$('#food-display').attr("src", )
+// 		console.log("night 1");
+// 	} else if ( randomNumber <= 85 && randomNumber >= 30){
+// 		 $('#food-display').attr("src", )
+// 		console.log("night 2");
+// 	} else {	
+// 		$('#food-display').attr("src", )
+// 		console.log("night 3");
+// 	}
+// };
 
-// const moveRight = () => {
-//        $("#tama-pic").animate({
-//        left: "+=188"
-//      }, 2000, function() {
-//         moveLeft();
+const fadeFoodInOut = () => {
+	let randomNumber = Math.floor(Math.random() * 3);
+	if(randomNumber === 1){
+		if(tony.hunger >4) {
+			tony.hunger -= 2
+		}
+		$('#stats-section').before('<img class="food" src="https://78.media.tumblr.com/c4e160ddb79839eb78641f70b6e5ca2d/tumblr_ojhc0pB4em1vkpk4fo1_500.png" />')
+		$('.food').fadeIn(
+			1000, function(){
+			$('.food').fadeOut(1000,function(){
+				$('.food').remove()
+				}
+			)
+		})	
+	} else if (randomNumber === 2){
+		if(tony.hunger >4) {
+			tony.hunger -= 1
+		}
+		$('#stats-section').before('<img class="food" src="https://data.whicdn.com/images/11815670/superthumb.gif?t=1310316270" />')
+		$('.food').fadeIn(
+			1000, function(){
+			$('.food').fadeOut(1000,function(){
+				$('.food').remove()
+				}
+			)
+		})
+	} else {
+		if(tony.hunger >4) {
+			tony.hunger -= 0
+		}
+		$('#stats-section').before('<img class="food" src="https://s1.piq.land/2014/09/23/92AwHC89RLT2QkrhuZ67WFnr_400x400.png" />')
+		$('.food').fadeIn(
+			1000, function(){
+			$('.food').fadeOut(1000,function(){
+				$('.food').remove()
+				}
+			)
+		})
+	}
+}
 
-//      });
-//    }
 
-// const moveLeft = () => {
-//        $("#tama-pic").animate({
-//        left: "-=188"
-//      }, 2000, function() {
-//         setTimeout(moveRight, 50);
-
-//      });
-//    }
 
 //    setTimeout(moveRight, 50);
 // const moveUp = () => {
